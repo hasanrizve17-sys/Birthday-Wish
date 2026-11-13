@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe7ef">
+<title>A Little Birthday Surprise for Aruuu 💗</title>
+<style>
+:root{--pink:#f7a9c4;--deep:#d96b98;--cream:#fffafc;--blue:#e7f6ff;--ink:#79566a}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:linear-gradient(145deg,#ffe7ef,#fff4f8 48%,#eaf7ff);overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}
+#floaties{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float{position:absolute;bottom:-40px;opacity:.55;animation:rise linear infinite;font-size:20px}
+@keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+main{position:relative;z-index:1;min-height:100vh;display:grid;place-items:center;padding:24px 14px}
+.card{width:min(100%,440px);min-height:560px;background:rgba(255,255,255,.82);border:2px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:0 18px 55px #d88eaa33;padding:30px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(12px);animation:pop .6s ease}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.hidden{display:none!important}
+.eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#c27c9b;font-weight:800}
+h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(32px,9vw,44px);line-height:1.1;color:#c86e94;margin:14px 0}
+h2{font-family:Georgia,serif;font-weight:500;color:#c86e94;font-size:30px;margin:12px 0}
+p{line-height:1.7;font-size:15px;margin:8px 0 18px}
+.sticker{font-size:78px;line-height:1.2;margin:10px 0 12px;filter:drop-shadow(0 6px 4px #d98aa833)}
+.sub{color:#a67b91;font-size:13px}
+.primary,.soft{border-radius:999px;padding:13px 24px;font-weight:800;box-shadow:0 7px 16px #d88eaa30;transition:.2s}
+.primary{background:linear-gradient(135deg,#f4a3bf,#e889ad);color:white}
+.soft{background:#edf8ff;color:#7799ad}
+.primary:hover,.soft:hover{transform:translateY(-2px)}
+.btnrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px;width:100%}
+.progress{height:5px;background:#f8e5ed;border-radius:10px;width:100%;margin:0 0 24px;overflow:hidden}
+.progress span{display:block;height:100%;width:var(--progress,16%);background:#e99bb8;border-radius:10px;transition:.4s}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin:12px 0}
+.photo{background:#f1f9ff;border:1.5px dashed #b9dce9;border-radius:18px;min-height:142px;display:grid;place-items:center;overflow:hidden;padding:10px;color:#82a5b4;font-size:13px}
+.photo img{width:100%;height:150px;object-fit:cover;border-radius:12px}
+.photo input{width:100%;font-size:10px;margin-top:8px}
+.letter{background:#fff8fb;border-radius:20px;padding:20px;text-align:left;border:1px solid #f8dce7;max-height:270px;overflow:auto;font-family:Georgia,serif;line-height:1.8;font-size:15px}
+.tiny{font-size:12px;color:#b28a9e;margin-top:18px}
+#noBtn{position:relative}
+.confetti{position:fixed;top:-20px;z-index:5;pointer-events:none;animation:fall 3.2s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+footer{font-size:11px;color:#b48da1;margin-top:18px}
+@media(max-width:380px){.card{padding:24px 17px;min-height:530px}.photo{min-height:120px}}
+</style>
+</head>
+<body>
+<div id="floaties"></div>
+<main>
+<section class="card" id="screen1">
+ <div class="eyebrow">a tiny surprise made with love</div>
+ <div class="sticker">🧸🎀</div>
+ <h1>Hey, Aruuu!</h1>
+ <p>Someone has prepared a little bundle of smiles just for you…</p>
+ <p class="sub">Are you ready to open your surprise?</p>
+ <button class="primary" onclick="go(2)">Open my surprise 💗</button>
+ <footer>made especially for you · with lots of sweetness</footer>
+</section>
+
+<section class="card hidden" id="screen2">
+ <div class="progress"><span style="--progress:25%"></span></div>
+ <div class="eyebrow">special delivery</div>
+ <div class="sticker">🐻‍❄️💌</div>
+ <h1>It's your special day!</h1>
+ <p>Sending you the biggest bundle of happiness, the warmest hugs, and a million tiny reasons to smile.</p>
+ <p class="sub">Ready for a little birthday magic?</p>
+ <button class="primary" onclick="confetti();go(3)">Yesss, let's go! ✨</button>
+</section>
+
+<section class="card hidden" id="screen3">
+ <div class="progress"><span style="--progress:45%"></span></div>
+ <div class="sticker">🎂🌷</div>
+ <div class="eyebrow">today is all about you</div>
+ <h1>Happy Birthday,<br>Aruuu!</h1>
+ <p>May your day be sprinkled with laughter, lovely surprises, sweet treats and all the happiness your heart can hold.</p>
+ <button class="primary" onclick="go(4)">A little memory lane 📸</button>
+</section>
+
+<section class="card hidden" id="screen4">
+ <div class="progress"><span style="--progress:62%"></span></div>
+ <div class="eyebrow">little moments, big smiles</div>
+ <h2>Memory Lane 🌸</h2>
+ <p>Every lovely person deserves a page full of happy moments. Add your favourite pictures here!</p>
+ <div class="photo-grid">
+  <label class="photo">🌷 Your favourite moment<input type="file" accept="image/*" onchange="showPhoto(this)"></label>
+  <label class="photo">🧁 A happy memory<input type="file" accept="image/*" onchange="showPhoto(this)"></label>
+ </div>
+ <p class="sub">Choose photos from your phone — they stay on this page.</p>
+ <button class="primary" onclick="go(5)">One more thing… 💌</button>
+</section>
+
+<section class="card hidden" id="screen5">
+ <div class="progress"><span style="--progress:80%"></span></div>
+ <div class="eyebrow">a little note for you</div>
+ <h2>Dear Aruuu, 💗</h2>
+ <div class="letter">
+  I hope you never forget how special you are. May you always find reasons to laugh, people who make you feel appreciated, and little moments that turn into beautiful memories.<br><br>
+  Keep being your lovely self. I hope this new chapter brings you gentle days, exciting adventures, delicious cake and dreams that come true one by one.<br><br>
+  You deserve all the good things life has to offer. Have the sweetest birthday ever! 🎀
+  <br><br>With lots of warm wishes,<br><b>Someone who wanted to make you smile ♡</b>
+ </div>
+ <button class="primary" onclick="go(6)">Wait… one last question! 🥺</button>
+</section>
+
+<section class="card hidden" id="screen6">
+ <div class="progress"><span style="--progress:100%"></span></div>
+ <div class="sticker">🥹💕</div>
+ <h1>Did this surprise<br>make you smile?</h1>
+ <p>Be honest… this little page was made to brighten your day!</p>
+ <div class="btnrow">
+  <button class="primary" onclick="finish()">Yesss! 💗</button>
+  <button class="soft" id="noBtn" onmouseover="dodge()" onclick="dodge()">Not yet 🙈</button>
+ </div>
+ <footer>there is no wrong answer… but the bear is hopeful 🧸</footer>
+</section>
+
+<section class="card hidden" id="screen7">
+ <div class="sticker">🎉🐻🎀</div>
+ <div class="eyebrow">mission accomplished</div>
+ <h1>Keep shining, Aruuu!</h1>
+ <p>Wishing you a year filled with cozy moments, belly laughs, kind people, new adventures and endless happiness.</p>
+ <h2>Lots of love & birthday sprinkles! ✨</h2>
+ <button class="soft" onclick="go(1)">Replay the surprise ↻</button>
+</section>
+</main>
+<script>
+const floaties=document.getElementById('floaties');
+const symbols=['♡','✿','💕','🌷','✨','୨୧'];
+for(let i=0;i<18;i++){let e=document.createElement('span');e.className='float';e.textContent=symbols[i%symbols.length];e.style.left=Math.random()*100+'%';e.style.animationDuration=(9+Math.random()*10)+'s';e.style.animationDelay=(-Math.random()*15)+'s';e.style.fontSize=(15+Math.random()*16)+'px';floaties.appendChild(e)}
+function go(n){document.querySelectorAll('main .card').forEach(x=>x.classList.add('hidden'));document.getElementById('screen'+n).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+function confetti(){const bits=['💗','🌸','✨','🎀','💕'];for(let i=0;i<34;i++){let e=document.createElement('span');e.className='confetti';e.textContent=bits[Math.floor(Math.random()*bits.length)];e.style.left=Math.random()*100+'vw';e.style.fontSize=(15+Math.random()*18)+'px';e.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),4200)}}
+function showPhoto(input){if(!input.files||!input.files[0])return;const label=input.parentElement;const img=document.createElement('img');img.src=URL.createObjectURL(input.files[0]);const old=label.querySelector('img');if(old)old.remove();label.insertBefore(img,input);label.firstChild.textContent='';}
+function dodge(){const b=document.getElementById('noBtn');b.style.transform=`translate(${(Math.random()*100-50)}px,${(Math.random()*50-25)}px)`;b.textContent='Try again 🙈'}
+function finish(){confetti();go(7)}
+</script>
+</body>
+</html>
